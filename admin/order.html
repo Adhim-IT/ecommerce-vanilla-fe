@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../assets/dist/output.css" rel="stylesheet">
+    <script type="module" src="../assets/js/components/navbar.js"></script>
+    <script type="module" src="../assets/js/admin/page-order.js"></script>
+</head>
+<body class="bg-gray-100">
+    <app-navbar></app-navbar>
+
+    <section class="p-3 sm:p-5 antialiased">
+        <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-3xl font-bold text-gray-900">List Order</h1>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-4 py-4">ID</th>
+                                <th scope="col" class="px-4 py-3">Customer</th>
+                                <th scope="col" class="px-4 py-3">Date</th>
+                                <th scope="col" class="px-4 py-3">Amount</th>
+                                <th scope="col" class="px-4 py-3">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="5" class="px-6 py-4 text-center text-gray-500">Loading orders...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const isAuthenticated = localStorage.getItem('token') !== null;
+        if (!isAuthenticated) {
+            window.location.href = '../login.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesanan Berhasil</title>
+    <link href="./assets/dist/output.css" rel="stylesheet">
+    <script type="module" src="./assets/js/components/navbar.js"></script>
+</head>
+<body class="bg-gray-100">
+    <app-navbar></app-navbar>
+    <div class="p-6 max-w-2xl mx-auto">
+        <div class="bg-white rounded-lg p-8 text-center">
+            <div class="text-6xl mb-4">✓</div>
+            <h1 class="text-3xl font-bold text-green-600 mb-2">Pesanan Berhasil!</h1>
+            <p class="text-gray-600 mb-6">Terima kasih telah berbelanja. Pesanan Anda telah dikonfirmasi.</p>
+            <div id="order-details" class="bg-gray-50 p-4 rounded mb-6 text-left"></div>
+            <a href="index.html" class="bg-blue-600 text-white px-6 py-2 rounded inline-block">Lanjut Belanja</a>
+        </div>
+    </div>
+    <script>
+        if (!localStorage.getItem('token')) window.location.href = 'login.html';
+
+        const params = new URLSearchParams(window.location.search);
+        const orderId = params.get('order_id');
+
+        if (orderId) {
+            document.getElementById('order-details').innerHTML = `<p><strong>ID Pesanan:</strong> ${orderId}</p>`;
+        }
+    </script>
+</body>
+</html>
