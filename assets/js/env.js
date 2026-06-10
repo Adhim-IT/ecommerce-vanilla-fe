@@ -1,0 +1,3 @@
+export const env = {
+    STRIPE_PUBLISHABLE_KEY: "pk_test_51P5KfTRxV7gERovnlVAINLRnNOyQ3aqvW3Ewv02fYHeNHdweUJONLt0LMUi28IJdx6ymyYwqDLKTde1NISZcCpdo00sAUVz9iF"
+};

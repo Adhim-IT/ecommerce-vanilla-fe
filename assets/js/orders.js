@@ -1,4 +1,5 @@
 import { apiCall } from './api.js';
+import { env } from './env.js';
 
 let stripe, elements, cardElement, currentClientSecret, currentOrderId;
 
@@ -7,7 +8,7 @@ async function getOrders() {
 }
 
 async function initStripe() {
-    stripe = Stripe('pk_test_51P5KfTRxV7gERovnlVAINLRnNOyQ3aqvW3Ewv02fYHeNHdweUJONLt0LMUi28IJdx6ymyYwqDLKTde1NISZcCpdo00sAUVz9iF');
+    stripe = Stripe(env.STRIPE_PUBLISHABLE_KEY);
     elements = stripe.elements();
     cardElement = elements.create('card');
     cardElement.mount('#card-element');
