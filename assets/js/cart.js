@@ -71,7 +71,16 @@ async function displayCart() {
 }
 
 window.handleAddToCart = async (product_id) => {
-    const quantity = parseInt(document.getElementById(`quantity-${product_id}`)?.value) || 1;
+    const input = document.getElementById(`quantity-${product_id}`);
+    const quantity = parseInt(input?.value) || 1;
+    const max = parseInt(input?.max);
+    const min = parseInt(input?.min) || 1;
+
+    if (quantity < min || quantity > max) {
+        alert(`Jumlah harus antara ${min} dan ${max}`);
+        return;
+    }
+
     try {
         await addToCart(product_id, quantity);
         alert('Product added to cart!');
