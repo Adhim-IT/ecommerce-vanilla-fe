@@ -51,7 +51,7 @@ async function displayCart() {
                 <div class="bg-white p-4 mb-2 rounded">
                     <p class="font-bold">${item.product.name}</p>
                     <p>$ ${item.product.price} x ${item.quantity} = $ ${subtotal.toLocaleString('en-US')}</p>
-                    <button onclick="handleRemoveFromCart(${item.product.id}); location.reload();" class="text-red-600 text-sm">Hapus</button>
+                    <button onclick="(async () => { await handleRemoveFromCart(${item.product.id}); location.reload(); })()">Hapus</button>
                 </div>
             `;
         }).join('');
@@ -82,6 +82,7 @@ window.handleAddToCart = async (product_id) => {
 
 window.handleRemoveFromCart = async (product_id) => {
     try {
+        confirm('Product removed from cart. Refresh page to see changes.');
         await removeFromCart(product_id);
     } catch (error) {
         alert(`Failed to remove product from cart: ${error.message}`);
